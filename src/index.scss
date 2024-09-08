@@ -1,0 +1,254 @@
+// global start  
+*{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -moz-osx-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    color: black;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+ul{
+  list-style: none;
+  padding: 0;
+}
+input {
+  outline: none;
+  border: none;
+}
+textarea{
+  border: none;
+  outline: none;
+  resize: none;
+}
+.nav-c:hover {
+    color: crimson !important;
+
+}
+.active{
+  text-decoration:underline
+}
+.fs-s{
+  font-size: 13px;
+}
+.text-hover-light:hover{
+  color: white !important;
+}
+.h-fit {
+  height: fit-content !important;
+}
+.up-btn {
+  right: 50px;
+  bottom: 50px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px); 
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.up-btn.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.main-head{
+  width: 1px;
+  transition: width 0.5s ease , color 0.5s ease;
+  color: crimson;
+  div{
+    width: 120px;
+  }
+}
+.main-head:hover{
+  width: 120px;
+  color: white;
+}
+// global end
+
+///////////////////////////
+///////////////////////////
+
+// footer start
+.footer {
+  background-color: black;
+  form{
+    input{
+      background-color: transparent;
+    }
+  }
+}
+// footer end 
+
+///////////////////////////
+
+/////////////////////////// 
+// about start
+.about{
+  .icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+  }
+}
+// about end
+
+// home start 
+.home{
+  .side-bar{
+    border-right: 1px solid black ;
+    a:hover {
+      color: crimson;
+    }
+    .side-nav{
+      width: fit-content;
+    }
+    .side-nav:hover {
+      color: crimson;
+      cursor: pointer;
+    }
+  }
+  .carousel-inner {
+    height: 350px;
+    ul{
+      height: 100%;
+      li{
+        height: 100%;
+        .card {
+          height: 98%;
+          .add-c{
+            background-color: black;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: 500;
+            position: absolute;
+            bottom: -60%;
+            left: 0;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color  0.5s ease , bottom  0.5s ease;
+            &:hover{
+              background-color: crimson;
+            }
+          }
+          &:hover .add-c {
+            bottom: 0%;
+          }
+          .actions{
+            position: absolute;
+            top: 5%;
+            right: -50%;
+            transition: right  0.5s ease;
+            .love , .view {
+              cursor: pointer;
+              background-color: #F5F5F5;
+              width: 30px;
+              height: 30px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              transition: background-color  0.5s ease , color  0.5s ease;
+              &:hover {
+                background-color: crimson;
+                color: white;
+              }
+            }
+          }
+          &:hover .actions {
+            right: 3%;
+          }
+          .offer {
+            width: 40px;
+            font-size: 12px;
+          }
+          .top{
+            height: 200px;
+            background-color:#e6e3e37a ;
+            img { 
+              width: 150px;
+              height: 150px;
+              transition: transform  0.5s ease;
+            }
+          }
+          &:hover img{
+            transform: scale(1.2);
+          }
+          .card-body{
+            min-height: 30%;
+            max-height: 30%;
+          }
+        }
+      }
+    }
+    button:hover {
+      background-color:crimson;
+    }
+  }
+  .categories{
+    .categories-box{
+      height: 120px;
+      transition:  color 0.5s ease , background-color 0.5s ease;
+      cursor: pointer;
+      &:hover {
+        background-color: crimson;
+        color: white;
+      }
+    }
+  }
+  .sale-again{
+    background-color: black;
+    .timer-box {
+      width: 80px;
+      height: 80px;
+    }
+  }
+}
+// home end 
+
+// view start 
+.view{
+  .love{
+    cursor: pointer;
+    transition: background-color 0.3s ease , color 0.3s ease;
+  }
+  .love:hover{
+    background-color: crimson;
+    color: white;
+  }
+}
+// view end 
+
+// res start
+@media (max-width:768px) {
+//////////////////////
+//////////////////////
+.carousel-inner {
+  button{
+    display: none;
+  }
+}
+}
+@media (max-width:900px) {
+  .home{
+    .side-bar{
+      border-right: none  !important;
+    }
+}
+//////////////////////
+//////////////////////
+
+
+}
+// res end
