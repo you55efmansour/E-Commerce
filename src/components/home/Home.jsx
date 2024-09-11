@@ -121,7 +121,6 @@ function Home() {
   }
     // format time as D:HH:MM:SS end
   
-    
     // display products start
 
     const [products, SetProtucts] = useState([]);
@@ -129,8 +128,16 @@ function Home() {
     const [womenProducts, SetwomenProtucts] = useState([]);
     const [jeweleryProducts, SetJeweleryProtucts] = useState([]);
     const [electronicsProducts, SetElectronicsProtucts] = useState([]);
-    let [cartProducts , SetCartProducts] = useState([])
-    let [loveProducts , SetLoveProducts] = useState([])
+    const [cartProducts , SetCartProducts] = useState(
+      () => {
+        const savedCart = localStorage.getItem('cart-products');
+        return savedCart ? JSON.parse(savedCart) : [];
+      }
+    )
+    const [loveProducts , SetLoveProducts] = useState(() => {
+      const savedCart = localStorage.getItem('love-product');
+      return savedCart ? JSON.parse(savedCart) : [];
+    })
 
     function addToCart(product) {
       SetCartProducts([...cartProducts,product])
@@ -344,12 +351,12 @@ function Home() {
 
   useEffect(() => {
         // Save updated love to localStorage
-        localStorage.setItem("l-product", JSON.stringify(loveProducts));
+        localStorage.setItem("love-product", JSON.stringify(loveProducts));
 
   }, [loveProducts]);
   useEffect(() => {
         // Save updated cart to localStorage
-        localStorage.setItem("c-product", JSON.stringify(cartProducts));
+        localStorage.setItem("cart-products", JSON.stringify(cartProducts));
         
   }, [cartProducts]);
   useEffect(() => {
@@ -420,7 +427,6 @@ function Home() {
      let savedCart = localStorage.getItem("c-product");
      console.log(savedCart);
         if (savedCart) {
-          console.log("aa");
           SetCartProducts(JSON.parse(savedCart));
         }
   }, []);
