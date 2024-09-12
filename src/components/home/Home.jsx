@@ -135,7 +135,7 @@ function Home() {
       }
     )
     const [loveProducts , SetLoveProducts] = useState(() => {
-      const savedCart = localStorage.getItem('love-product');
+      const savedCart = localStorage.getItem('love-products');
       return savedCart ? JSON.parse(savedCart) : [];
     })
 
@@ -168,7 +168,7 @@ function Home() {
               <div className="love rounded-circle mb-2" onClick={()=> addToLove(product)}>
                 <i className="fa-regular fa-heart"></i>
               </div>
-              <Link to="/view" className="view rounded-circle">
+              <Link to={`/view/${product.id}/${product.category}`} className="view rounded-circle">
                 <i className="fa-regular fa-eye"></i>
               </Link>
             </div>
@@ -351,7 +351,7 @@ function Home() {
 
   useEffect(() => {
         // Save updated love to localStorage
-        localStorage.setItem("love-product", JSON.stringify(loveProducts));
+        localStorage.setItem("love-products", JSON.stringify(loveProducts));
 
   }, [loveProducts]);
   useEffect(() => {
@@ -424,11 +424,6 @@ function Home() {
     getWomensProducts()
     getMensProducts();
     getAllProducts();
-     let savedCart = localStorage.getItem("c-product");
-     console.log(savedCart);
-        if (savedCart) {
-          SetCartProducts(JSON.parse(savedCart));
-        }
   }, []);
 
   return (

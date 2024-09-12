@@ -73,6 +73,12 @@ textarea{
   width: 120px;
   color: white;
 }
+.mvh-50{
+  min-height: 50vh !important;
+}
+.vh-50{
+  height: 50vh !important;
+}
 // global end
 
 ///////////////////////////
@@ -226,6 +232,83 @@ textarea{
   .love:hover{
     background-color: crimson;
     color: white;
+  }
+  .carousel-inner {
+    height: 350px;
+    ul{
+      height: 100%;
+      li{
+        height: 100%;
+        .card {
+          height: 98%;
+          .add-c{
+            background-color: black;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: 500;
+            position: absolute;
+            bottom: -60%;
+            left: 0;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color  0.5s ease , bottom  0.5s ease;
+            &:hover{
+              background-color: crimson;
+            }
+          }
+          &:hover .add-c {
+            bottom: 0%;
+          }
+          .actions{
+            position: absolute;
+            top: 5%;
+            right: -50%;
+            transition: right  0.5s ease;
+            .love , .view {
+              cursor: pointer;
+              background-color: #F5F5F5;
+              width: 30px;
+              height: 30px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              transition: background-color  0.5s ease , color  0.5s ease;
+              &:hover {
+                background-color: crimson;
+                color: white;
+              }
+            }
+          }
+          &:hover .actions {
+            right: 3%;
+          }
+          .offer {
+            width: 40px;
+            font-size: 12px;
+          }
+          .top{
+            height: 200px;
+            background-color:#e6e3e37a ;
+            img { 
+              width: 150px;
+              height: 150px;
+              transition: transform  0.5s ease;
+            }
+          }
+          &:hover img{
+            transform: scale(1.2);
+          }
+          .card-body{
+            min-height: 30%;
+            max-height: 30%;
+          }
+        }
+      }
+    }
+    button:hover {
+      background-color:crimson;
+    }
   }
 }
 // view end 

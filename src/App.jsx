@@ -78,7 +78,7 @@ function App() {
                 <Footer/>
               </>
             }/>
-            <Route path="/view" element={
+            <Route path={"/view/:id/:category"} element={
               <>
                 <NavBar/>
                 <div className="mb-5 pb-4">

@@ -28,7 +28,7 @@ function Cart() {
       })
       return cartProduct
     }
-  }  
+  }
   function addPrice(products) {
     let cartPrice = 0;
     if (products) {
