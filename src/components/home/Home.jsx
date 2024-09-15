@@ -32,26 +32,26 @@ function Home() {
   };
 
   // scroll start
-  const secMen = useRef(null)
-  const secweman = useRef(null)
-  const secEle = useRef(null)
-  const secJew = useRef(null)
-  const secUp = useRef(null)
-  const upBtn = useRef(null)
-  const secShow = useRef(null)
+  const secMen = useRef(null);
+  const secweman = useRef(null);
+  const secEle = useRef(null);
+  const secJew = useRef(null);
+  const secUp = useRef(null);
+  const upBtn = useRef(null);
+  const secShow = useRef(null);
 
   function scrollToSection(sec) {
     if (sec.current) {
-      sec.current.scrollIntoView({ behavior: 'smooth' });
+      sec.current.scrollIntoView({ behavior: "smooth" });
     }
-  } 
+  }
   // scroll end
-  
+
   // format time as D:HH:MM:SS start
-  
+
   const initialTime = 4 * 24 * 60 * 60 + 23 * 60 * 60 + 59 * 60 + 60;
   const [timeLeft, setTimeLeft] = useState(initialTime);
-  
+
   function formatTime(time) {
     const days = Math.floor(time / (24 * 60 * 60));
     const hours = Math.floor((time % (24 * 60 * 60)) / (60 * 60));
@@ -119,38 +119,36 @@ function Home() {
       </>
     );
   }
-    // format time as D:HH:MM:SS end
-  
-    // display products start
+  // format time as D:HH:MM:SS end
 
-    const [products, SetProtucts] = useState([]);
-    const [menProducts, SetMenProtucts] = useState([]);
-    const [womenProducts, SetwomenProtucts] = useState([]);
-    const [jeweleryProducts, SetJeweleryProtucts] = useState([]);
-    const [electronicsProducts, SetElectronicsProtucts] = useState([]);
-    const [cartProducts , SetCartProducts] = useState(
-      () => {
-        const savedCart = localStorage.getItem('cart-products');
-        return savedCart ? JSON.parse(savedCart) : [];
-      }
-    )
-    const [loveProducts , SetLoveProducts] = useState(() => {
-      const savedCart = localStorage.getItem('love-products');
-      return savedCart ? JSON.parse(savedCart) : [];
-    })
+  // display products start
 
-    function addToCart(product) {
-      SetCartProducts([...cartProducts,product])
-    }
-    function addToCartOffer(product , offerPrice) {
-      SetCartProducts([...cartProducts,{...product , price : offerPrice }])
-    }
+  const [products, SetProtucts] = useState([]);
+  const [menProducts, SetMenProtucts] = useState([]);
+  const [womenProducts, SetwomenProtucts] = useState([]);
+  const [jeweleryProducts, SetJeweleryProtucts] = useState([]);
+  const [electronicsProducts, SetElectronicsProtucts] = useState([]);
+  const [cartProducts, SetCartProducts] = useState(() => {
+    const savedCart = localStorage.getItem("cart-products");
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
+  const [loveProducts, SetLoveProducts] = useState(() => {
+    const savedCart = localStorage.getItem("love-products");
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
 
-    function addToLove(product) {
-          SetLoveProducts([...loveProducts,product])
-    }
+  function addToCart(product) {
+    SetCartProducts([...cartProducts, product]);
+  }
+  function addToCartOffer(product, offerPrice) {
+    SetCartProducts([...cartProducts, { ...product, price: offerPrice }]);
+  }
 
-    function showAllProducts(allProducts) {
+  function addToLove(product) {
+    SetLoveProducts([...loveProducts, product]);
+  }
+
+  function showAllProducts(allProducts) {
     let products = allProducts.map((product) => {
       return (
         <div
@@ -163,12 +161,29 @@ function Home() {
               className="card-img-top img-fluid"
               alt="..."
             />
-            <div className="add-c" onClick={()=> addToCartOffer(product , (product.price * 40) / 100 )}>Add To Cart</div>
+            <div
+              className="add-c"
+              onClick={() => {
+                addToCartOffer(product, (product.price * 40) / 100);
+                addAlert("Added To Cart");
+              }}
+            >
+              Add To Cart
+            </div>
             <div className="actions">
-              <div className="love rounded-circle mb-2" onClick={()=> addToLove(product)}>
+              <div
+                className="love rounded-circle mb-2"
+                onClick={() => {
+                  addToLove(product);
+                  addAlert("Added To Love");
+                }}
+              >
                 <i className="fa-regular fa-heart"></i>
               </div>
-              <Link to={`/view/${product.id}/${product.category}`} className="view rounded-circle">
+              <Link
+                to={`/view/${product.id}/${product.category}/${true}`}
+                className="view rounded-circle"
+              >
                 <i className="fa-regular fa-eye"></i>
               </Link>
             </div>
@@ -182,10 +197,10 @@ function Home() {
             } ${product.title.split(" ")[2]}`}</h5>
             <p className="card-text">
               <span className="price text-danger fw-semibold me-2">
-                ${(product.price * 40) / 100}
+                ${((product.price * 40) / 100).toFixed(2)}
               </span>
               <span className="p-offer text-decoration-line-through text-secondary">
-                ${product.price}
+                ${product.price.toFixed(2)}
               </span>
             </p>
           </div>
@@ -207,12 +222,29 @@ function Home() {
               className="card-img-top img-fluid"
               alt="..."
             />
-            <div className="add-c" onClick={()=> addToCart(product)}>Add To Cart</div>
+            <div
+              className="add-c"
+              onClick={() => {
+                addToCart(product);
+                addAlert("Added To Cart");
+              }}
+            >
+              Add To Cart
+            </div>
             <div className="actions">
-              <div className="love rounded-circle mb-2" onClick={()=> addToLove(product)}>
+              <div
+                className="love rounded-circle mb-2"
+                onClick={() => {
+                  addToLove(product);
+                  addAlert("Added To Love");
+                }}
+              >
                 <i className="fa-regular fa-heart"></i>
               </div>
-              <Link to="/view" className="view rounded-circle">
+              <Link
+                to={`/view/${product.id}/${product.category}/${false}`}
+                className="view rounded-circle"
+              >
                 <i className="fa-regular fa-eye"></i>
               </Link>
             </div>
@@ -245,12 +277,29 @@ function Home() {
               className="card-img-top img-fluid"
               alt="..."
             />
-            <div className="add-c" onClick={()=> addToCart(product)}>Add To Cart</div>
+            <div
+              className="add-c"
+              onClick={() => {
+                addToCart(product);
+                addAlert("Added To Cart");
+              }}
+            >
+              Add To Cart
+            </div>
             <div className="actions">
-              <div className="love rounded-circle mb-2" onClick={()=> addToLove(product)}>
+              <div
+                className="love rounded-circle mb-2"
+                onClick={() => {
+                  addToLove(product);
+                  addAlert("Added To Love");
+                }}
+              >
                 <i className="fa-regular fa-heart"></i>
               </div>
-              <Link to="/view" className="view rounded-circle">
+              <Link
+                to={`/view/${product.id}/${product.category}/${false}`}
+                className="view rounded-circle"
+              >
                 <i className="fa-regular fa-eye"></i>
               </Link>
             </div>
@@ -283,12 +332,29 @@ function Home() {
               className="card-img-top img-fluid"
               alt="..."
             />
-            <div className="add-c" onClick={()=> addToCart(product)}>Add To Cart</div>
+            <div
+              className="add-c"
+              onClick={() => {
+                addToCart(product);
+                addAlert("Added To Cart");
+              }}
+            >
+              Add To Cart
+            </div>
             <div className="actions">
-              <div className="love rounded-circle mb-2" onClick={()=> addToLove(product)}>
+              <div
+                className="love rounded-circle mb-2"
+                onClick={() => {
+                  addToLove(product);
+                  addAlert("Added To Love");
+                }}
+              >
                 <i className="fa-regular fa-heart"></i>
               </div>
-              <Link to="/view" className="view rounded-circle">
+              <Link
+                to={`/view/${product.id}/${product.category}/${false}`}
+                className="view rounded-circle"
+              >
                 <i className="fa-regular fa-eye"></i>
               </Link>
             </div>
@@ -321,12 +387,29 @@ function Home() {
               className="card-img-top img-fluid"
               alt="..."
             />
-            <div className="add-c" onClick={()=> addToCart(product)}>Add To Cart</div>
+            <div
+              className="add-c"
+              onClick={() => {
+                addToCart(product);
+                addAlert("Added To Cart");
+              }}
+            >
+              Add To Cart
+            </div>
             <div className="actions">
-              <div className="love rounded-circle mb-2" onClick={()=> addToLove(product)}>
+              <div
+                className="love rounded-circle mb-2"
+                onClick={() => {
+                  addToLove(product);
+                  addAlert("Added To Love");
+                }}
+              >
                 <i className="fa-regular fa-heart"></i>
               </div>
-              <Link to="/view" className="view rounded-circle">
+              <Link
+                to={`/view/${product.id}/${product.category}/${false}`}
+                className="view rounded-circle"
+              >
                 <i className="fa-regular fa-eye"></i>
               </Link>
             </div>
@@ -350,14 +433,12 @@ function Home() {
   // display products end
 
   useEffect(() => {
-        // Save updated love to localStorage
-        localStorage.setItem("love-products", JSON.stringify(loveProducts));
-
+    // Save updated love to localStorage
+    localStorage.setItem("love-products", JSON.stringify(loveProducts));
   }, [loveProducts]);
   useEffect(() => {
-        // Save updated cart to localStorage
-        localStorage.setItem("cart-products", JSON.stringify(cartProducts));
-        
+    // Save updated cart to localStorage
+    localStorage.setItem("cart-products", JSON.stringify(cartProducts));
   }, [cartProducts]);
   useEffect(() => {
     if (timeLeft <= 0) {
@@ -373,18 +454,18 @@ function Home() {
     return () => clearInterval(interval);
   }, [timeLeft]);
 
-  const [show , SetShow] = useState(true)
+  const [show, SetShow] = useState(true);
   useEffect(() => {
-    if (window.scrollY + window.innerHeight >= secShow.current.offsetTop ) {
+    if (window.scrollY + window.innerHeight >= secShow.current.offsetTop) {
       if (show) {
         upBtn.current.classList.add("visible");
-        SetShow(false)
+        SetShow(false);
       }
-    }else{
+    } else {
       if (show) {
-      }else{
+      } else {
         upBtn.current.classList.remove("visible");
-        SetShow(true)
+        SetShow(true);
       }
     }
   }, [window.scrollY]);
@@ -419,39 +500,104 @@ function Home() {
       );
       SetJeweleryProtucts(res.data);
     }
-    getJeweleryProducts()
-    getElectronicsProducts()
-    getWomensProducts()
+    getJeweleryProducts();
+    getElectronicsProducts();
+    getWomensProducts();
     getMensProducts();
     getAllProducts();
   }, []);
 
+  // add alerts
+  const [alerts, setAlerts] = useState([]);
+  function addAlert(message) {
+    const id = Date.now();
+    setAlerts([...alerts, { id, message }]);
+  }
+
+  // remove alert
+  function alertRemove(id) {
+    setTimeout(() => {
+      setAlerts((alerts) => alerts.filter((alert) => alert.id !== id));
+    }, 2000);
+  }
+
   return (
     <div className="home border-top">
       <div className="container">
-        <div ref={upBtn} className="btn btn-danger up-btn position-fixed z-2" onClick={()=>{scrollToSection(secUp)}}>
+        <div
+          id="alert"
+          class="col-8 me-3 col-md-2 col-lg-2 position-fixed end-0 z-3 opacity-75"
+        >
+          {alerts.map((a) => {
+            alertRemove(a.id);
+            return (
+              <>
+                <div
+                  class="alert alert-success alert-dismissible fade show"
+                  id={`alert-${a.id}`}
+                  role="alert"
+                >
+                  <strong>{a.message}</strong>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"
+                    aria-label="Close"
+                  ></button>
+                </div>
+              </>
+            );
+          })}
+        </div>
+        <div
+          ref={upBtn}
+          className="btn btn-danger up-btn position-fixed z-2"
+          onClick={() => {
+            scrollToSection(secUp);
+          }}
+        >
           <i className="fa-solid fa-angle-up"></i>
         </div>
         <div ref={secUp} className="row justify-content-between mb-5">
           <div className="col-12 col-lg-4 pt-5 border-end side-bar border-md-end-0">
             <ul className="d-flex flex-column fw-bold gap-4">
-            <li>
-                <div className="side-nav"  onClick={()=>{scrollToSection(secMen)}}>
+              <li>
+                <div
+                  className="side-nav"
+                  onClick={() => {
+                    scrollToSection(secMen);
+                  }}
+                >
                   Men’s Fashion
                 </div>
               </li>
               <li>
-                <div className="side-nav" onClick={()=>{scrollToSection(secweman)}}>
+                <div
+                  className="side-nav"
+                  onClick={() => {
+                    scrollToSection(secweman);
+                  }}
+                >
                   Woman’s Fashion
                 </div>
               </li>
               <li>
-                <div className="side-nav" onClick={()=>{scrollToSection(secEle)}}>
+                <div
+                  className="side-nav"
+                  onClick={() => {
+                    scrollToSection(secEle);
+                  }}
+                >
                   electronics
                 </div>
               </li>
               <li>
-                <div className="side-nav" onClick={()=>{scrollToSection(secJew)}}>
+                <div
+                  className="side-nav"
+                  onClick={() => {
+                    scrollToSection(secJew);
+                  }}
+                >
                   jewelery
                 </div>
               </li>
@@ -494,10 +640,8 @@ function Home() {
             {showAllProducts(products)}
           </Carousel>
           {/* sale-products end */}
-
         </div>
         {/* Sales end */}
-
 
         {/* Categories start  */}
         <div ref={secShow} className="categories row mt-5 py-5">
@@ -567,9 +711,9 @@ function Home() {
               <div className="ps-4 fw-bold ">Men’s</div>
             </div>
           </div>
-            <Carousel className="carousel-inner mt-5" responsive={responsive}>
-              {showMensProducts(menProducts)}
-            </Carousel>
+          <Carousel className="carousel-inner mt-5" responsive={responsive}>
+            {showMensProducts(menProducts)}
+          </Carousel>
         </div>
         {/* Mens products end */}
 
@@ -596,9 +740,9 @@ function Home() {
         {/*  women start */}
         <div ref={secweman} className="women row mt-5 py-5">
           <div className="div col-12">
-              <div className="main-head bg-danger rounded p-2 h-fit">
-                <div className="ps-4 fw-bold ">Women’s</div>
-              </div>
+            <div className="main-head bg-danger rounded p-2 h-fit">
+              <div className="ps-4 fw-bold ">Women’s</div>
+            </div>
           </div>
           <Carousel className="carousel-inner mt-5" responsive={responsive}>
             {showWomensProducts(womenProducts)}
@@ -609,9 +753,9 @@ function Home() {
         {/* jewelery start */}
         <div ref={secEle} className="jewelery row mt-5 py-5">
           <div className="div col-12">
-              <div className="main-head bg-danger rounded p-2 h-fit">
-                <div className="ps-4 fw-bold ">Jewelery</div>
-              </div>
+            <div className="main-head bg-danger rounded p-2 h-fit">
+              <div className="ps-4 fw-bold ">Jewelery</div>
+            </div>
           </div>
           <Carousel className="carousel-inner mt-5" responsive={responsive}>
             {showJeweleryProducts(jeweleryProducts)}
@@ -622,9 +766,9 @@ function Home() {
         {/* electronics start */}
         <div ref={secJew} className="electronics row mt-5 py-5">
           <div className="div col-12">
-              <div className="main-head bg-danger rounded p-2 h-fit">
-                <div className="ps-4 fw-bold ">electronics</div>
-              </div>
+            <div className="main-head bg-danger rounded p-2 h-fit">
+              <div className="ps-4 fw-bold ">electronics</div>
+            </div>
           </div>
           <Carousel className="carousel-inner mt-5" responsive={responsive}>
             {showElectronicsProducts(electronicsProducts)}

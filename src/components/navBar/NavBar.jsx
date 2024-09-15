@@ -1,13 +1,15 @@
-import { NavLink } from "react-router-dom";
-function NavBar() {
+import { Link, NavLink } from "react-router-dom";
+function NavBar(prop) {
+  let {tok} = prop
+  
   return (
     <>
       <div>
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
           <div className="container d-flex justify-content-between ">
-            <a className="navbar-brand fw-bold" href="#">
+            <Link className="navbar-brand fw-bold" href="#">
               Exclusive
-            </a>
+            </Link>
             <button
               className="navbar-toggler"
               type="button"
@@ -33,11 +35,18 @@ function NavBar() {
                 <li className="nav-item dropdown">
                   <NavLink className={"nav-c"} exact="true" activeclassname="active" to={"/about"}>About</NavLink>
                 </li>
+                {!tok &&
                 <li className="nav-item">
                   <NavLink className={"nav-c"} exact="true" activeclassname="active" to={"/signUp"}>SignUp</NavLink>
                 </li>
-                {true && <li className="nav-item"><NavLink className={"nav-c"} exact="true" activeclassname="active" to={"/love"}><i className="fa-regular fa-heart"></i></NavLink></li>}
-                {true && <li className="nav-item"><NavLink className={"nav-c"} exact="true" activeclassname="active" to={"/cart"}><i className="fa-solid fa-cart-shopping"></i></NavLink></li>}
+                }
+                {tok &&
+                <li className="nav-item">
+                  <NavLink className={"nav-c"} exact="true" activeclassname="active" to={"/signUp"} onClick={()=>localStorage.clear()}>Log Out</NavLink>
+                </li>
+                }
+                {tok && <li className="nav-item"><NavLink className={"nav-c"} exact="true" activeclassname="active" to={"/love"}><i className="fa-regular fa-heart"></i></NavLink></li>}
+                {tok && <li className="nav-item"><NavLink className={"nav-c"} exact="true" activeclassname="active" to={"/cart"}><i className="fa-solid fa-cart-shopping"></i></NavLink></li>}
                 
               </ul>
             </div>

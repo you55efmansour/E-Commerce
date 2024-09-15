@@ -10,15 +10,17 @@ import Cart from "./components/cart/Cart";
 import Love from "./components/love/Love";
 import View from "./components/view/View";
 function App() {
+  const token = localStorage.getItem("token")
+  
   const location = useLocation()
   return (
   <>
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={
               <>
-                <NavBar/>
+                <NavBar tok = {token? true : false} />
                 <div className="mb-5 pb-4">
-                  <Home/> 
+                  <Home tok = {token? true : false}/> 
                 </div>
                 <Footer/>
               </>
@@ -26,7 +28,7 @@ function App() {
             />
             <Route path="/contact" element={
               <>
-                <NavBar/>
+                <NavBar tok = {token? true : false} />
                 <div className="mb-5 pb-4">
                   <Contact/>
                 </div>
@@ -35,7 +37,7 @@ function App() {
             }/>
             <Route path="/about" element={
               <>
-                <NavBar/>
+                <NavBar tok = {token? true : false} />
                 <div className="mb-5 pb-4">
                   <About/>
                 </div>
@@ -44,7 +46,7 @@ function App() {
             }/>
             <Route path="/signUp" element={
               <>
-                <NavBar/>
+                <NavBar tok = {token? true : false} />
                 <div className="mb-5 pb-4">
                   <SignUp/>
                 </div>
@@ -53,7 +55,7 @@ function App() {
             }/>
             <Route path="/logIn" element={
               <>
-                <NavBar/>
+                <NavBar tok = {token? true : false} />
                 <div className="mb-5 pb-4">
                   <LogIn/>
                 </div>
@@ -62,7 +64,7 @@ function App() {
             }/>
             <Route path="/cart" element={
               <>
-                <NavBar/>
+                <NavBar tok = {token? true : false} />
                 <div className="mb-5 pb-4">
                   <Cart/>
                 </div>
@@ -71,16 +73,16 @@ function App() {
             }/>
             <Route path="/love" element={
               <>
-                <NavBar/>
+                <NavBar tok = {token? true : false} />
                 <div className="mb-5 pb-4">
                   <Love/>
                 </div>
                 <Footer/>
               </>
             }/>
-            <Route path={"/view/:id/:category"} element={
+            <Route path={"/view/:id/:category/:offer"} element={
               <>
-                <NavBar/>
+                <NavBar tok = {token? true : false} />
                 <div className="mb-5 pb-4">
                   <View/>
                 </div>
