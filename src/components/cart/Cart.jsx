@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from 'react-helmet';
 
 function Cart() {
   const [products, SetProducts] = useState();
@@ -54,6 +55,10 @@ function Cart() {
   }, [])
   return (
     <div className="cart mt-5">
+      <Helmet>
+        <title>Cart</title>
+        <meta name="here you can see your chosen product in the cart" content="store"/>
+      </Helmet>
       <div className="container">
         <div className="text-black-50">
           Home / <span className="text-dark">cart</span>

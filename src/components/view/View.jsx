@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
+import { Helmet } from 'react-helmet';
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { useParams } from "react-router-dom";
@@ -149,6 +149,10 @@ function View() {
     if (!product) return null;
     return (
       <>
+      <Helmet>
+        <title>View</title>
+        <meta name="here we view our products details" content="store"/>
+      </Helmet>
         <div className="text-black-50">
           Home / <span>{product.category.split(" ")[0]}</span> /{" "}
           <span className="text-dark fw-bold">
@@ -174,7 +178,11 @@ function View() {
               <div className="btn btn-danger">Buy Now</div>
               <div
                 className="love border border-2 p-1"
-                onClick={() => addToLove(product)}
+                onClick={() => {
+                  addToLove(product)
+                  addAlert("Added To Love")
+                }
+                }
               >
                 <i className="fa-regular fa-heart"></i>
               </div>
@@ -214,7 +222,8 @@ function View() {
         >
           {alerts.map((a) => {
             alertRemove(a.id);
-            return (<div 
+            return (
+                  <div 
                     key={a.id}
                     className="alert alert-success alert-dismissible fade show"
                     id={`alert-${a.id}`}

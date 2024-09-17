@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Helmet } from 'react-helmet';
+
 
 function Love() {
   const [products, SetProducts] = useState();
@@ -36,6 +38,10 @@ function Love() {
   }, [])
   return (
     <div className="love mt-5 mvh-50">
+      <Helmet>
+        <title>Love</title>
+        <meta name="you can see your love list here" content="store"/>
+      </Helmet>
       <div className="container">
         <div className="text-black-50">
           Home / <span className="text-dark">love</span>

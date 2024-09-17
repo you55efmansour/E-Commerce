@@ -1,6 +1,12 @@
+import { Helmet } from 'react-helmet';
+
 function Contact() {
     return (
     <div className="contact mt-5">
+      <Helmet>
+        <title>Contact</title>
+        <meta name="you can contact us here using your gmail" content="store"/>
+      </Helmet>
       <div className="container">
         <div className="text-black-50">Home / <span className="text-dark">contact</span></div>
         <div className="row gap-3 mt-5">

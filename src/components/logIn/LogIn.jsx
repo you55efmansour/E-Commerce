@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import signUpImg from '../../imgs/signUp.jpg'
 import { useState } from 'react';
+import { Helmet } from 'react-helmet';
+
 function LogIn() {
   const [formData , SetFormData] = useState({
   })
@@ -17,6 +19,10 @@ function LogIn() {
   }
   return (
     <>
+    <Helmet>
+        <title>Login</title>
+        <meta name="login with your e-mail" content="store"/>
+      </Helmet>
       <div className="row col-12 mt-5 pt-3">
         <div className="img col-12 col-md-6 col-lg-6">
           <img className="img-fluid" src={signUpImg} alt="" />

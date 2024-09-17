@@ -3,10 +3,15 @@ import aboutImg2 from "../../imgs/about-2.png";
 import aboutImg3 from "../../imgs/about-3.png";
 import aboutImg4 from "../../imgs/about-4.png";
 import { Link } from "react-router-dom";
+import { Helmet } from 'react-helmet';
 
 function About() {
   return (
     <div className="about mt-5 position-relative">
+      <Helmet>
+        <title>About</title>
+        <meta name="about Exclusive" content="store"/>
+      </Helmet>
       <div className="container">
         <div className="text-black-50">
           Home / <span className="text-dark">about</span>
@@ -71,7 +76,7 @@ function About() {
         {/* row 3 */}
         <div className="row gap-4 mt-5 pt-5 justify-content-center">
           {/* card 1 */}
-          <div className="col-12 col-md-5 col-lg-3 ">
+          <div data-aos="flip-left" className="col-12 col-md-5 col-lg-3 ">
             <div className="bg-secondary-subtle d-flex flex-column justify-content-end h-75 p-5 pb-0">
               <img className="img-fluid" src={aboutImg2} alt="" />
             </div>
@@ -96,7 +101,7 @@ function About() {
             </ul>
           </div>
           {/* card 2 */}
-          <div className="col-12 col-md-5 col-lg-3 ">
+          <div data-aos="flip-left" className="col-12 col-md-5 col-lg-3 ">
             <div className="bg-secondary-subtle d-flex flex-column justify-content-end h-75 p-5 pb-0">
               <img className="img-fluid" src={aboutImg3} alt="" />
             </div>
@@ -121,7 +126,7 @@ function About() {
             </ul>
           </div>
           {/* card 3 */}
-          <div className="col-12 col-md-5 col-lg-3 ">
+          <div data-aos="flip-left" className="col-12 col-md-5 col-lg-3 ">
             <div className="bg-secondary-subtle d-flex flex-column justify-content-end h-75 p-5 pb-0">
               <img className="img-fluid" src={aboutImg4} alt="" />
             </div>

@@ -8,6 +8,8 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 import { Link } from "react-router-dom";
+import { Helmet } from 'react-helmet';
+
 import axios from "axios";
 
 function Home() {
@@ -523,29 +525,32 @@ function Home() {
 
   return (
     <div className="home border-top">
+      <Helmet>
+        <title>Home</title>
+        <meta name="here you can find all of our products clothes for mens and womans , Jewelery and electronics " content="store"/>
+      </Helmet>
       <div className="container">
         <div
           id="alert"
-          class="col-8 me-3 col-md-2 col-lg-2 position-fixed end-0 z-3 opacity-75"
+          className="col-8 me-3 col-md-2 col-lg-2 position-fixed end-0 z-3 opacity-75"
         >
           {alerts.map((a) => {
             alertRemove(a.id);
             return (
-              <>
                 <div
-                  class="alert alert-success alert-dismissible fade show"
+                  className="alert alert-success alert-dismissible fade show"
                   id={`alert-${a.id}`}
                   role="alert"
+                  key={a.id}
                 >
                   <strong>{a.message}</strong>
                   <button
                     type="button"
-                    class="btn-close"
+                    className="btn-close"
                     data-bs-dismiss="alert"
                     aria-label="Close"
                   ></button>
                 </div>
-              </>
             );
           })}
         </div>
@@ -636,9 +641,11 @@ function Home() {
             {formatTime(timeLeft)}
           </div>
           {/* sale-products start */}
-          <Carousel className="carousel-inner mt-5" responsive={responsive}>
-            {showAllProducts(products)}
-          </Carousel>
+          <div data-aos="fade-left">
+            <Carousel className="carousel-inner mt-5" responsive={responsive}>
+              {showAllProducts(products)}
+            </Carousel>
+          </div>
           {/* sale-products end */}
         </div>
         {/* Sales end */}
@@ -711,9 +718,11 @@ function Home() {
               <div className="ps-4 fw-bold ">Men’s</div>
             </div>
           </div>
-          <Carousel className="carousel-inner mt-5" responsive={responsive}>
-            {showMensProducts(menProducts)}
-          </Carousel>
+          <div data-aos="fade-left">
+            <Carousel className="carousel-inner mt-5" responsive={responsive}>
+              {showMensProducts(menProducts)}
+            </Carousel>
+          </div>
         </div>
         {/* Mens products end */}
 
@@ -744,9 +753,11 @@ function Home() {
               <div className="ps-4 fw-bold ">Women’s</div>
             </div>
           </div>
-          <Carousel className="carousel-inner mt-5" responsive={responsive}>
-            {showWomensProducts(womenProducts)}
-          </Carousel>
+          <div data-aos="fade-left">
+            <Carousel className="carousel-inner mt-5" responsive={responsive}>
+              {showWomensProducts(womenProducts)}
+            </Carousel>
+          </div>
         </div>
         {/* women end */}
 
@@ -757,9 +768,12 @@ function Home() {
               <div className="ps-4 fw-bold ">Jewelery</div>
             </div>
           </div>
-          <Carousel className="carousel-inner mt-5" responsive={responsive}>
-            {showJeweleryProducts(jeweleryProducts)}
-          </Carousel>
+          <div data-aos="fade-left">
+            <Carousel className="carousel-inner mt-5" responsive={responsive}>
+              {showJeweleryProducts(jeweleryProducts)}
+            </Carousel>
+            
+          </div>
         </div>
         {/* jewelery end */}
 
@@ -770,9 +784,11 @@ function Home() {
               <div className="ps-4 fw-bold ">electronics</div>
             </div>
           </div>
-          <Carousel className="carousel-inner mt-5" responsive={responsive}>
-            {showElectronicsProducts(electronicsProducts)}
-          </Carousel>
+          <div data-aos="fade-left">
+            <Carousel className="carousel-inner mt-5" responsive={responsive}>
+              {showElectronicsProducts(electronicsProducts)}
+            </Carousel>
+          </div>
         </div>
         {/* electronics end */}
 

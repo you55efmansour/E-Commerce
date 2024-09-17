@@ -1,8 +1,14 @@
 import {Link } from 'react-router-dom';
 import signUpImg from '../../imgs/signUp.jpg'
+import { Helmet } from 'react-helmet';
+
 function SignUp() {
     return (
     <>
+      <Helmet>
+        <title>SignUp</title>
+        <meta name="sign up and join us" content="store"/>
+      </Helmet>
       <div className="row col-12 mt-5 pt-3">
           <div className="img col-12 col-md-6 col-lg-6">
             <img className='img-fluid' src={signUpImg} alt="" />
