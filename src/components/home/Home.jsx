@@ -629,7 +629,7 @@ function Home() {
           </div>
         </div>
         {/* Sales start */}
-        <div className="sales row align-items-center" id="sale">
+        <div className="sales overflow-hidden row align-items-center" id="sale">
           <div className="div col-12">
             <div className="main-head bg-danger rounded p-2 h-fit">
               <span className="ps-4 fw-bold">Today’s</span>
@@ -651,7 +651,7 @@ function Home() {
         {/* Sales end */}
 
         {/* Categories start  */}
-        <div ref={secShow} className="categories row mt-5 py-5">
+        <div ref={secShow} className="categories overflow-hidden row mt-5 py-5">
           <div className="div col-12">
             <div className="main-head bg-danger rounded p-2 h-fit">
               <span className="ps-4 fw-bold">Categories</span>
@@ -712,7 +712,7 @@ function Home() {
         {/* Categories end */}
 
         {/* Mens products start */}
-        <div ref={secMen} className="Men row mt-5 py-5">
+        <div ref={secMen} className="Men overflow-hidden row mt-5 py-5">
           <div className="div col-12">
             <div className="main-head bg-danger rounded p-2 h-fit">
               <div className="ps-4 fw-bold ">Men’s</div>
@@ -727,7 +727,7 @@ function Home() {
         {/* Mens products end */}
 
         {/* sale again start */}
-        <div className="sale-again row mt-5 py-5 text-light">
+        <div className="sale-again overflow-hidden row mt-5 py-5 text-light">
           <div className="container overflow-hidden">
             <div className="row">
               <div className="left ms-5 mb-5 col-lg-6 col-12">
@@ -747,7 +747,7 @@ function Home() {
         {/* sale again end */}
 
         {/*  women start */}
-        <div ref={secweman} className="women row mt-5 py-5">
+        <div ref={secweman} className="women overflow-hidden row mt-5 py-5">
           <div className="div col-12">
             <div className="main-head bg-danger rounded p-2 h-fit">
               <div className="ps-4 fw-bold ">Women’s</div>
@@ -762,7 +762,7 @@ function Home() {
         {/* women end */}
 
         {/* jewelery start */}
-        <div ref={secEle} className="jewelery row mt-5 py-5">
+        <div ref={secEle} className="jewelery overflow-hidden row mt-5 py-5">
           <div className="div col-12">
             <div className="main-head bg-danger rounded p-2 h-fit">
               <div className="ps-4 fw-bold ">Jewelery</div>
@@ -778,7 +778,7 @@ function Home() {
         {/* jewelery end */}
 
         {/* electronics start */}
-        <div ref={secJew} className="electronics row mt-5 py-5">
+        <div ref={secJew} className="electronics overflow-hidden row mt-5 py-5">
           <div className="div col-12">
             <div className="main-head bg-danger rounded p-2 h-fit">
               <div className="ps-4 fw-bold ">electronics</div>
